@@ -7,8 +7,8 @@ require("parallel")
 
 PARAM <- list()
 # reemplazar por las propias semillas
-PARAM$semillas <- c(102191, 200177, 410551, 552581, 892237)
-
+#PARAM$semillas <- c(989761,933553,375509,311557,784897)
+PARAM$semillas <- c(692059,964213,267643,839227,134639)
 #------------------------------------------------------------------------------
 # particionar agrega una columna llamada fold a un dataset que consiste
 #  en una particion estratificada segun agrupa
@@ -78,7 +78,7 @@ ArbolEstimarGanancia <- function(semilla, param_basicos) {
 #------------------------------------------------------------------------------
 
 # Aqui se debe poner la carpeta de la computadora local
-setwd("X:\\gdrive\\ITBA2023B\\") # Establezco el Working Directory
+setwd("~/buckets/b1") # Establezco el Working Directory
 # cargo los datos
 
 # cargo los datos
