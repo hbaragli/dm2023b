@@ -1,7 +1,8 @@
 Para replicar el experimento el orden de las carpetas es el siguiente:
 
-1) Expiremento_Incial
+1) Corrida_Incial
 2) Corrdia_2
 3) Corrida_3
 
 Como este experimento se trata de oversampling necesitar crear un  VM con mayor memoria ya que el oversampling implica aumentar el area del dataset. En este caso los mismos se correrieron en un VM de 8 CPU y 300 GB de ram.
+
