@@ -42,7 +42,7 @@ PARAM$lgb_semilla  <- 989761   #cambiar por su propia semilla
 
 #Hiperparametros FIJOS de  lightgbm
 PARAM$lgb_basicos <- list(
-   boosting= "gbdt",               #puede ir  dart  , ni pruebe random_forest
+   boosting= "dart",               #puede ir  dart la opcion por defecto era gbdt  , ni pruebe random_forest
    objective= "binary",
    metric= "custom",
    first_metric_only= TRUE,
@@ -84,7 +84,7 @@ PARAM$bo_lgb <- makeParamSet(
 
 
 #si usted es ambicioso, y tiene paciencia, podria subir este valor a 100
-PARAM$bo_iteraciones  <- 75  #iteraciones de la Optimizacion Bayesiana
+PARAM$bo_iteraciones  <- 100  #iteraciones de la Optimizacion Bayesiana
 
 PARAM$home  <- "~/buckets/b1/"
 
