@@ -37,7 +37,7 @@ PARAM$exp_input  <- "TS7410"
 
 PARAM$lgb_crossvalidation_folds  <- 5  #En caso que se haga cross validation, se usa esta cantidad de folds
 
-PARAM$lgb_semilla  <- 102191   #cambiar por su propia semilla
+PARAM$lgb_semilla  <- 989761   #cambiar por su propia semilla
 
 
 #Hiperparametros FIJOS de  lightgbm
@@ -84,7 +84,7 @@ PARAM$bo_lgb <- makeParamSet(
 
 
 #si usted es ambicioso, y tiene paciencia, podria subir este valor a 100
-PARAM$bo_iteraciones  <- 50  #iteraciones de la Optimizacion Bayesiana
+PARAM$bo_iteraciones  <- 75  #iteraciones de la Optimizacion Bayesiana
 
 PARAM$home  <- "~/buckets/b1/"
 
