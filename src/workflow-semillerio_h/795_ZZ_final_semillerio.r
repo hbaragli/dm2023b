@@ -25,7 +25,7 @@ PARAM$exp_input  <- "HT7510"
 
 PARAM$modelos_rank  <- c( 1 )  #Que modelos quiero, segun su posicion en el ranking e la Bayesian Optimizacion, ordenado por ganancia descendente
 PARAM$semillerio  <- 100   # cantidad de semillas a utilizar en el semillerio, podrian ser 50 o 100 para mayor estabilidad
-PARAM$semilla_primos  <- 989761  # se utiliza para generar el vector de  PARAM$semillerio  semillas
+PARAM$semilla_primos  <- 692059  # se utiliza para generar el vector de  PARAM$semillerio  semillas
 
 PARAM$kaggle$envios_desde  <-  9500L
 PARAM$kaggle$envios_hasta  <- 12000L
@@ -35,6 +35,7 @@ PARAM$graficar$envios_hasta  <- 20000L  #para el caso que deba graficar
 PARAM$graficar$ventana_suavizado  <- 2001L
 
 PARAM$home  <- "~/buckets/b1/"
+PARAM$home2  <- "~/buckets/b1/Experimentos Joha - CORRIDA FINAL"
 # FIN Parametros del script
 
 OUTPUT  <- list()
@@ -214,20 +215,20 @@ GrabarOutput()
 write_yaml( PARAM, file= "parametros.yml" )   #escribo parametros utilizados
 
 #leo la salida de la optimizaciob bayesiana
-arch_log  <- paste0( PARAM$home, "exp/", PARAM$exp_input, "/BO_log.txt" )
+arch_log  <- paste0( PARAM$home2, "/", PARAM$exp_input, "/BO_log.txt" )
 tb_log  <- fread( arch_log )
 setorder( tb_log, -ganancia )
 
 #leo el nombre del expermento de la Training Strategy
-arch_TS  <- paste0( PARAM$home, "exp/", PARAM$exp_input, "/TrainingStrategy.txt" )
+arch_TS  <- paste0( PARAM$home2, "/", PARAM$exp_input, "/TrainingStrategy.txt" )
 TS  <- readLines( arch_TS, warn= FALSE )
 
 #leo el dataset donde voy a entrenar el modelo final
-arch_dataset  <- paste0( PARAM$home, "exp/", TS, "/dataset_train_final.csv.gz" )
+arch_dataset  <- paste0( PARAM$home2, "/", TS, "/dataset_train_final.csv.gz" )
 dataset  <- fread( arch_dataset )
 
 #leo el dataset donde voy a aplicar el modelo final
-arch_future  <- paste0( PARAM$home, "exp/", TS, "/dataset_future.csv.gz" )
+arch_future  <- paste0( PARAM$home2, "/", TS, "/dataset_future.csv.gz" )
 dfuture  <- fread( arch_future )
 
 # logical que me indica si los dtos de future tienen la clase con valores, y NO va para Kaggle
