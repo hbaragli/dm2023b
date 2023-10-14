@@ -42,7 +42,7 @@ PARAM$lgb_semilla  <- 989761   #cambiar por su propia semilla
 
 #Hiperparametros FIJOS de  lightgbm
 PARAM$lgb_basicos <- list(
-   boosting= "dart",               #puede ir  dart la opcion por defecto era gbdt  , ni pruebe random_forest
+   boosting= "gbdt",               #puede ir  dart la opcion por defecto era gbdt  , ni pruebe random_forest
    objective= "binary",
    metric= "custom",
    first_metric_only= TRUE,
