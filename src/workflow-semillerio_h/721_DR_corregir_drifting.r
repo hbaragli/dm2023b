@@ -23,8 +23,8 @@ PARAM$exp_input  <- "CA7110"
 PARAM$variables_intrames  <- TRUE   # atencion esto esta en TRUE
 
 #valores posibles  
-#  "ninguno" "rank_simple" , "rank_cero_fijo" , "deflacion", "estandarizar"
-PARAM$metodo  <- "rank_cero_fijo"
+#  "ninguno" "rank_simple" , "rank_cero_fijo" , "deflacion", "estandarizar", "div_media"
+PARAM$metodo  <- "div_media"
 
 PARAM$home  <- "~/buckets/b1/"
 # FIN Parametros del script
@@ -222,6 +222,29 @@ drift_estandarizar <- function(campos_drift) {
   }
 }
 #------------------------------------------------------------------------------
+drift_div_media <- function(campos_drift) {
+  for (campo in campos_drift)
+  {
+    cat(campo, " ")
+    dataset[, paste0(campo, "_divmedia") :=
+              (get(campo) / mean(get(campo), na.rm=TRUE)),
+            by = foto_mes]
+    
+    dataset [, (campo) := NULL]
+  }
+  
+  nans      <- lapply(names(dataset),function(.name) dataset[ , sum(is.nan(get(.name)))])
+  nans_qty  <- sum( unlist( nans) )
+  if( nans_qty > 0 )
+  {
+    cat( "ATENCION, hay", nans_qty, "valores NaN 0/0 en tu dataset. Seran pasados arbitrariamente a 0\n" )
+    cat( "Si no te gusta la decision, modifica a gusto el programa!\n\n")
+    dataset[mapply(is.nan, dataset)] <<- 0
+  }
+}
+
+
+#------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 #Aqui comienza el programa
 OUTPUT$PARAM  <- PARAM
@@ -259,7 +282,8 @@ PARAM$metodo,
   "rank_simple"    = drift_rank_simple( campos_monetarios ),
   "rank_cero_fijo" = drift_rank_cero_fijo( campos_monetarios ),
   "deflacion"      = drift_deflacion( campos_monetarios ),
-  "estandarizar"   = drift_estandarizar(campos_monetarios)
+  "estandarizar"   = drift_estandarizar(campos_monetarios),
+  "div_media"      = drift_div_media(campos_monetarios)
 )
 
 
