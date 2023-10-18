@@ -22,9 +22,9 @@ require("lightgbm")
 
 #Parametros del script
 PARAM  <- list()
-PARAM$experimento  <- "HB7960"
+PARAM$experimento  <- "C:\\MD\\HB7960"
 
-PARAM$exp_input  <- c( "ZZ7950-01", "ZZ7950-66", "ZZ7950-53", "ZZ7950-52" )  # el inpput deben ser semillerios
+PARAM$exp_input  <- c( "ZZ7950_CORRIDA1", "ZZ7950_CORRIDA2", "ZZ7950_CORRIDA3", "ZZ7950_CORRIDA4", "ZZ7950_CORRIDA5" )  # el inpput deben ser semillerios
 
 PARAM$kaggle$envios_desde  <-  9500L
 PARAM$kaggle$envios_hasta  <- 12000L
@@ -33,7 +33,7 @@ PARAM$kaggle$envios_salto  <-   500L
 PARAM$graficar$envios_hasta  <- 20000L  #para el caso que deba graficar
 PARAM$graficar$ventana_suavizado  <- 2001L
 
-PARAM$home  <- "~/buckets/b1/"
+PARAM$home  <- "C:\\MD\\KAGGLE_FINAL"
 # FIN Parametros del script
 
 OUTPUT  <- list()
